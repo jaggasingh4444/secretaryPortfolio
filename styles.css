@@ -1562,7 +1562,15 @@ body.lightbox-open {
   }
 
   h1 {
-    max-width: 10ch;
+    max-width: 100%;
+    font-size: clamp(2.35rem, 9vw, 4.8rem);
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  .devanagari {
+    max-width: 100%;
+    font-size: clamp(1.75rem, 6.5vw, 2.75rem);
   }
 
   .quick-strip,
@@ -1791,6 +1799,15 @@ body.lightbox-open {
 
   .hero-image {
     object-position: 38% 14%;
+  }
+
+  h1 {
+    font-size: clamp(2.32rem, 10.2vw, 3rem);
+    line-height: 1.04;
+  }
+
+  .devanagari {
+    font-size: clamp(1.72rem, 7.2vw, 2.12rem);
   }
 
   .hero-copy {
