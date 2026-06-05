@@ -507,6 +507,10 @@ h1 {
   box-shadow: 0 12px 28px rgba(20, 33, 43, 0.06);
 }
 
+.profile-fact-wide {
+  grid-column: 1 / -1;
+}
+
 .profile-fact span {
   display: block;
   margin-bottom: 0.35rem;
