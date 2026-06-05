@@ -434,6 +434,11 @@ h1 {
   align-items: start;
 }
 
+.about-section {
+  grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(1.4rem, 4vw, 3.2rem);
+}
+
 .section h2 {
   margin-bottom: 0;
   font-size: clamp(2rem, 4.5vw, 4rem);
@@ -489,6 +494,8 @@ h1 {
 
 .about-profile p {
   margin-bottom: 0;
+  text-align: left;
+  text-align-last: auto;
 }
 
 .profile-facts {
@@ -552,6 +559,10 @@ h1 {
 .stat-text {
   font-size: clamp(1.1rem, 2.4vw, 1.7rem);
   overflow-wrap: anywhere;
+}
+
+.stat-place {
+  white-space: nowrap;
 }
 
 
@@ -1646,6 +1657,12 @@ body.lightbox-open {
     font-size: clamp(1.35rem, 6vw, 1.85rem);
   }
 
+  .quick-strip .stat-place {
+    font-size: clamp(0.84rem, 3.2vw, 1.1rem);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
   .quick-strip p {
     margin-top: 0.32rem;
     font-size: clamp(0.58rem, 2.8vw, 0.74rem);
@@ -1757,6 +1774,10 @@ body.lightbox-open {
 
   .quick-strip .stat {
     font-size: clamp(1.2rem, 7vw, 1.62rem);
+  }
+
+  .quick-strip .stat-place {
+    font-size: clamp(0.72rem, 3.05vw, 0.9rem);
   }
 
   .quick-strip p {
