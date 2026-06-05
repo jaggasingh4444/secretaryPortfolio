@@ -450,6 +450,22 @@ h1 {
   line-height: 1.7;
 }
 
+.hero-copy,
+.section-copy p,
+.committee-intro,
+.committee-panel p,
+.committee-scope p,
+.focus-item p,
+.story-copy p,
+.meeting-copy p,
+.update-card p,
+.info-card p,
+.contact-note {
+  text-align: justify;
+  text-align-last: left;
+  text-justify: inter-word;
+}
+
 .section-copy p {
   font-size: 1.06rem;
 }
