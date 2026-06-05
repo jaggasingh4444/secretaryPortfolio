@@ -469,6 +469,87 @@ h1 {
 .section-copy p {
   font-size: 1.06rem;
 }
+.about-title h2 {
+  max-width: 10ch;
+}
+
+.about-subtitle {
+  max-width: 25rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.14rem);
+  font-weight: 850;
+  line-height: 1.45;
+}
+
+.about-profile {
+  display: grid;
+  gap: 1rem;
+}
+
+.about-profile p {
+  margin-bottom: 0;
+}
+
+.profile-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.profile-fact {
+  min-width: 0;
+  padding: 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 12px 28px rgba(20, 33, 43, 0.06);
+}
+
+.profile-fact span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--rose);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profile-fact strong {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(0.95rem, 1.6vw, 1.08rem);
+  line-height: 1.35;
+}
+
+.profile-link {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  border-radius: 999px;
+  padding: 0.78rem 1.1rem;
+  color: #ffffff;
+  background: var(--teal);
+  box-shadow: 0 16px 28px rgba(15, 118, 110, 0.22);
+  font-weight: 900;
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.profile-link:hover {
+  transform: translateY(-2px);
+  background: #0d625c;
+  box-shadow: 0 20px 34px rgba(15, 118, 110, 0.28);
+}
+
+.stat-text {
+  font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+  overflow-wrap: anywhere;
+}
+
 
 .section-heading {
   max-width: 720px;
@@ -1534,6 +1615,10 @@ body.lightbox-open {
     min-height: 16rem;
   }
 
+  .about-title h2 {
+    max-width: 100%;
+  }
+
   .quick-strip {
     width: min(100% - 1rem, 42rem);
     margin-top: -1.25rem;
@@ -1674,6 +1759,11 @@ body.lightbox-open {
     font-size: clamp(0.53rem, 2.75vw, 0.66rem);
   }
 
+  .profile-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-link,
   .button {
     width: 100%;
   }
