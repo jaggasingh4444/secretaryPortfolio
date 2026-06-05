@@ -504,6 +504,110 @@ h1 {
   font-weight: 800;
 }
 
+
+.committee-section {
+  padding-top: clamp(3rem, 6vw, 5rem);
+}
+
+.committee-intro {
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.committee-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.committee-grid-secondary {
+  margin-top: 1rem;
+}
+
+.committee-panel,
+.committee-scope {
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 14px 34px rgba(20, 33, 43, 0.06);
+}
+
+.committee-panel {
+  padding: clamp(1.15rem, 3vw, 1.5rem);
+}
+
+.committee-panel h3,
+.committee-scope h3 {
+  margin: 0.45rem 0 0.65rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+}
+
+.committee-panel p,
+.committee-scope p {
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.committee-panel p:last-child,
+.committee-scope p {
+  margin-bottom: 0;
+}
+
+.committee-points,
+.committee-scope-list {
+  list-style: none;
+  padding: 0;
+}
+
+.committee-points {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+}
+
+.committee-points li {
+  position: relative;
+  padding-left: 1.15rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.committee-points li::before {
+  content: "";
+  position: absolute;
+  top: 0.62rem;
+  left: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.committee-scope {
+  margin-top: 1rem;
+  padding: clamp(1.15rem, 3vw, 1.5rem);
+}
+
+.committee-scope-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1rem 0 0;
+}
+
+.committee-scope-list li {
+  padding: 0.82rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  color: var(--ink);
+  background: #f8fbf9;
+  font-weight: 750;
+  line-height: 1.45;
+}
+
 .focus-band {
   width: 100%;
   padding-left: max(1rem, calc((100% - 1120px) / 2));
@@ -1279,6 +1383,8 @@ body.lightbox-open {
 
   .quick-strip,
   .info-grid,
+  .committee-grid,
+  .committee-scope-list,
   .updates-grid,
   .gallery-grid,
   .story-section,
