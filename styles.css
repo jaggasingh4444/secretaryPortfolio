@@ -1048,6 +1048,17 @@ body.lightbox-open {
   stroke-linejoin: round;
 }
 
+.contact-card-facebook {
+  font-family: Arial, sans-serif;
+  font-size: clamp(1.75rem, 3.6vw, 2.1rem);
+  font-weight: 900;
+}
+
+.contact-letter {
+  line-height: 1;
+  transform: translateY(0.05rem);
+}
+
 .contact-tooltip {
   position: absolute;
   left: 50%;
