@@ -1678,38 +1678,11 @@ body.lightbox-open {
   }
 
   .quick-strip {
-    width: min(100% - 1rem, 42rem);
-    margin-top: -1.25rem;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: none;
   }
 
-  .quick-strip article {
-    min-width: 0;
-    padding: 0.9rem 0.42rem;
-    text-align: center;
-    border-right: 1px solid var(--line);
-    border-bottom: 0;
-  }
-
-  .quick-strip article:last-child {
-    border-right: 0;
-    border-bottom: 0;
-  }
-
-  .quick-strip .stat {
-    font-size: clamp(1.35rem, 6vw, 1.85rem);
-  }
-
-  .quick-strip .stat-place {
-    font-size: clamp(0.84rem, 3.2vw, 1.1rem);
-    line-height: 1.08;
-    letter-spacing: 0;
-  }
-
-  .quick-strip p {
-    margin-top: 0.32rem;
-    font-size: clamp(0.58rem, 2.8vw, 0.74rem);
-    line-height: 1.16;
+  .about-section {
+    padding-top: clamp(2rem, 6vw, 3rem);
   }
 
   .gallery-tile {
@@ -1816,24 +1789,8 @@ body.lightbox-open {
     text-align-last: auto;
   }
 
-  .quick-strip {
-    width: calc(100% - 0.9rem);
-  }
-
-  .quick-strip article {
-    padding: 0.78rem 0.28rem;
-  }
-
-  .quick-strip .stat {
-    font-size: clamp(1.2rem, 7vw, 1.62rem);
-  }
-
-  .quick-strip .stat-place {
-    font-size: clamp(0.72rem, 3.05vw, 0.9rem);
-  }
-
-  .quick-strip p {
-    font-size: clamp(0.53rem, 2.75vw, 0.66rem);
+  .about-section {
+    padding-top: 1.85rem;
   }
 
   .profile-facts {
