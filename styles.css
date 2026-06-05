@@ -1304,12 +1304,54 @@ body.lightbox-open {
   display: none;
 }
 
+.contact-submit:disabled {
+  opacity: 0.68;
+  cursor: progress;
+  transform: none;
+}
+
 .form-status {
-  min-height: 1.25rem;
-  margin: -0.2rem 0 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.9rem;
-  font-weight: 750;
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 90;
+  width: min(25rem, calc(100% - 2rem));
+  min-height: 0;
+  margin: 0;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-left: 0.28rem solid #9ae6db;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
+    rgba(13, 25, 32, 0.94);
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.26);
+  font-size: 0.94rem;
+  font-weight: 850;
+  line-height: 1.45;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(1rem) scale(0.98);
+  transition: opacity 180ms ease, transform 180ms ease;
+  backdrop-filter: blur(18px);
+}
+
+.form-status.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.form-status.is-success {
+  border-left-color: #9ae6db;
+}
+
+.form-status.is-info {
+  border-left-color: #f4c85d;
+}
+
+.form-status.is-error {
+  border-left-color: #f87171;
 }
 
 

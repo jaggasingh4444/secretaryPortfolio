@@ -14,6 +14,7 @@ const lightboxPrev = document.querySelector("[data-lightbox-prev]");
 const lightboxNext = document.querySelector("[data-lightbox-next]");
 const contactForm = document.querySelector(".contact-form");
 const formStatus = document.querySelector("[data-form-status]");
+const contactSubmit = document.querySelector(".contact-submit");
 
 let activeMeetingPhoto = 0;
 
@@ -118,12 +119,21 @@ const moveLightbox = (direction) => {
 };
 
 
-const setFormStatus = (english, nepali) => {
+let formStatusTimer;
+
+const setFormStatus = (english, nepali, type = "info") => {
   if (!formStatus) return;
 
+  window.clearTimeout(formStatusTimer);
   formStatus.dataset.en = english;
   formStatus.dataset.ne = nepali;
   formStatus.textContent = document.documentElement.lang === "ne" ? nepali : english;
+  formStatus.classList.remove("is-success", "is-error", "is-info");
+  formStatus.classList.add("is-visible", `is-${type}`);
+
+  formStatusTimer = window.setTimeout(() => {
+    formStatus.classList.remove("is-visible");
+  }, 5200);
 };
 
 const buildMailtoUrl = (form) => {
@@ -178,15 +188,50 @@ stats.forEach((item) => countObserver.observe(item));
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.langToggle));
 });
-contactForm?.addEventListener("submit", (event) => {
-  if (window.location.protocol !== "file:") return;
-
+contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
-  setFormStatus(
-    "Local file mode detected. Opening your email app with this message.",
-    "स्थानीय फाइलबाट खोलिएको छ। यो सन्देशसहित इमेल एप खुल्दैछ।"
-  );
-  window.location.href = buildMailtoUrl(contactForm);
+
+  if (window.location.protocol === "file:") {
+    setFormStatus(
+      "Local file mode detected. Opening your email app with this message.",
+      "स्थानीय फाइलबाट खोलिएको छ। यो सन्देशसहित इमेल एप खुल्दैछ।",
+      "info"
+    );
+    window.location.href = buildMailtoUrl(contactForm);
+    return;
+  }
+
+  contactSubmit?.setAttribute("disabled", "true");
+  setFormStatus("Sending message...", "सन्देश पठाउँदै...", "info");
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: contactForm.method,
+      body: new FormData(contactForm),
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Form submission failed");
+    }
+
+    contactForm.reset();
+    setFormStatus(
+      "Message sent successfully. Thank you.",
+      "सन्देश सफलतापूर्वक पठाइयो। धन्यवाद।",
+      "success"
+    );
+  } catch {
+    setFormStatus(
+      "Message could not be sent. Please email or call directly.",
+      "सन्देश पठाउन सकिएन। कृपया इमेल वा फोनबाट सिधै सम्पर्क गर्नुहोस्।",
+      "error"
+    );
+  } finally {
+    contactSubmit?.removeAttribute("disabled");
+  }
 });
 
 meetingPhotos.forEach((photo, index) => {
