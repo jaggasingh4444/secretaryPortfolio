@@ -467,6 +467,8 @@ h1 {
 .committee-intro,
 .committee-panel p,
 .committee-scope p,
+.committee-duty-copy p,
+.committee-duty-list p,
 .focus-item p,
 .story-copy p,
 .meeting-copy p,
@@ -753,6 +755,77 @@ h1 {
   font-weight: 750;
   line-height: 1.45;
 }
+.committee-duties {
+  margin-top: 1rem;
+  padding: clamp(1.2rem, 3vw, 1.65rem);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(135deg, rgba(132, 240, 223, 0.12), rgba(255, 255, 255, 0.92)),
+    #ffffff;
+  box-shadow: 0 16px 38px rgba(20, 33, 43, 0.07);
+}
+
+.committee-duty-copy {
+  max-width: 760px;
+}
+
+.committee-duty-copy h3 {
+  margin: 0.45rem 0 0.65rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+}
+
+.committee-duty-copy p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.committee-duty-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.committee-duty-list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.35rem 0.72rem;
+  align-content: start;
+  padding: 0.95rem;
+  border: 1px solid rgba(220, 230, 226, 0.92);
+  border-radius: 0.5rem;
+  background: rgba(248, 251, 249, 0.9);
+}
+
+.committee-duty-list span {
+  grid-row: span 2;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--teal);
+  font-weight: 850;
+}
+
+.committee-duty-list strong {
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.committee-duty-list p {
+  grid-column: 2;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.58;
+}
+
 
 .focus-band {
   width: 100%;
@@ -1701,6 +1774,7 @@ body.lightbox-open {
   .info-grid,
   .committee-grid,
   .committee-scope-list,
+  .committee-duty-list,
   .updates-grid,
   .gallery-grid,
   .story-section,
@@ -1925,6 +1999,18 @@ body.lightbox-open {
 
   .profile-facts {
     grid-template-columns: 1fr;
+  }
+
+  .committee-duty-list li {
+    grid-template-columns: 1fr;
+  }
+
+  .committee-duty-list span {
+    grid-row: auto;
+  }
+
+  .committee-duty-list p {
+    grid-column: auto;
   }
 
   .profile-link,
