@@ -15,8 +15,15 @@ const lightboxNext = document.querySelector("[data-lightbox-next]");
 const contactForm = document.querySelector(".contact-form");
 const formStatus = document.querySelector("[data-form-status]");
 const contactSubmit = document.querySelector(".contact-submit");
+const menuToggle = document.querySelector("[data-menu-toggle]");
+const navLinks = document.querySelector(".nav-links");
 
 let activeMeetingPhoto = 0;
+
+const closeMobileMenu = () => {
+  header?.classList.remove("is-menu-open");
+  menuToggle?.setAttribute("aria-expanded", "false");
+};
 
 const syncHeader = () => {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -188,6 +195,15 @@ stats.forEach((item) => countObserver.observe(item));
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.langToggle));
 });
+
+menuToggle?.addEventListener("click", () => {
+  const isOpen = header.classList.toggle("is-menu-open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+navLinks?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", closeMobileMenu);
+});
 contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -252,6 +268,10 @@ lightbox?.addEventListener("click", (event) => {
   }
 });
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMobileMenu();
+  }
+
   if (!lightbox?.classList.contains("is-open")) return;
 
   if (event.key === "Escape") {
