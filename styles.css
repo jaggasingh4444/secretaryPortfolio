@@ -1535,11 +1535,36 @@ body.lightbox-open {
 @media (max-width: 840px) {
   .site-header {
     position: absolute;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    row-gap: 0.8rem;
   }
 
   .nav-links {
+    grid-column: 1 / -1;
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    gap: clamp(1rem, 5vw, 2rem);
+    padding: 0.2rem 0 0.35rem;
+    color: #ffffff;
+    font-size: clamp(0.9rem, 4.4vw, 1.05rem);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-links::-webkit-scrollbar {
     display: none;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
+    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.26);
+  }
+
+  .site-header.is-scrolled .nav-links {
+    color: var(--ink);
   }
 
   .brand strong {
@@ -1548,7 +1573,7 @@ body.lightbox-open {
 
   .hero {
     min-height: 82svh;
-    padding-top: 7.4rem;
+    padding-top: 10.35rem;
   }
 
   .hero-image {
@@ -1712,6 +1737,13 @@ body.lightbox-open {
 @media (max-width: 520px) {
   .site-header {
     padding: 0.85rem 1rem;
+    row-gap: 0.7rem;
+  }
+
+  .nav-links {
+    gap: 1.15rem;
+    padding-bottom: 0.25rem;
+    font-size: 0.94rem;
   }
 
   .header-action {
@@ -1767,6 +1799,7 @@ body.lightbox-open {
 
   .hero {
     min-height: 78svh;
+    padding-top: 10.15rem;
     padding-bottom: 3.3rem;
   }
 
