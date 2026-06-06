@@ -461,7 +461,9 @@ h1 {
 }
 
 .hero-copy,
+.about-subtitle,
 .section-copy p,
+.about-profile p,
 .committee-intro,
 .committee-panel p,
 .committee-scope p,
@@ -474,6 +476,9 @@ h1 {
   text-align: justify;
   text-align-last: left;
   text-justify: inter-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-spacing: normal;
 }
 
 .section-copy p {
@@ -525,8 +530,6 @@ h1 {
 
 .about-profile p {
   margin-bottom: 0;
-  text-align: left;
-  text-align-last: auto;
 }
 
 .profile-facts {
@@ -1714,11 +1717,6 @@ body.lightbox-open {
     line-height: 1.08;
   }
 
-  .meeting-copy p {
-    text-align: left;
-    text-align-last: auto;
-  }
-
   .meeting-gallery {
     grid-template-rows: none;
   }
@@ -1919,8 +1917,6 @@ body.lightbox-open {
 
   .hero-copy {
     line-height: 1.55;
-    text-align: left;
-    text-align-last: auto;
   }
 
   .about-section {
