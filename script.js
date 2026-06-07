@@ -25,6 +25,12 @@ const closeMobileMenu = () => {
   menuToggle?.setAttribute("aria-expanded", "false");
 };
 
+const closeLanguageMenu = () => {
+  if (languageSwitcher && "open" in languageSwitcher) {
+    languageSwitcher.open = false;
+  }
+};
+
 const syncHeader = () => {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
 };
@@ -193,7 +199,10 @@ const setLanguage = (language) => {
 reveals.forEach((item) => revealObserver.observe(item));
 stats.forEach((item) => countObserver.observe(item));
 languageButtons.forEach((button) => {
-  button.addEventListener("click", () => setLanguage(button.dataset.langToggle));
+  button.addEventListener("click", () => {
+    setLanguage(button.dataset.langToggle);
+    closeLanguageMenu();
+  });
 });
 
 menuToggle?.addEventListener("click", () => {
@@ -203,6 +212,12 @@ menuToggle?.addEventListener("click", () => {
 
 navLinks?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
+});
+
+document.addEventListener("click", (event) => {
+  if (!languageSwitcher?.contains(event.target)) {
+    closeLanguageMenu();
+  }
 });
 contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -270,6 +285,7 @@ lightbox?.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeMobileMenu();
+    closeLanguageMenu();
   }
 
   if (!lightbox?.classList.contains("is-open")) return;

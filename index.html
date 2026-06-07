@@ -32,20 +32,28 @@
         <a href="#contact" data-en="Contact" data-ne="सम्पर्क">Contact</a>
       </nav>
 
-      <div class="language-switcher" data-lang-current="en" aria-label="Choose language">
-        <span class="language-orb" aria-hidden="true">🌐</span>
-        <span class="language-slider" aria-hidden="true"></span>
-        <button class="lang-button is-active" type="button" data-lang-toggle="en" aria-pressed="true">
-          <span class="flag">🇬🇧</span>
-          <span class="lang-name">English</span>
-          <span class="lang-short">EN</span>
-        </button>
-        <button class="lang-button" type="button" data-lang-toggle="ne" aria-pressed="false">
-          <span class="flag">🇳🇵</span>
-          <span class="lang-name">नेपाली</span>
-          <span class="lang-short">ने</span>
-        </button>
-      </div>
+      <details class="language-switcher" data-lang-current="en">
+        <summary class="language-current" aria-label="Choose language">
+          <span class="language-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18" />
+              <path d="M12 3c2.4 2.55 3.6 5.55 3.6 9S14.4 18.45 12 21" />
+              <path d="M12 3C9.6 5.55 8.4 8.55 8.4 12s1.2 6.45 3.6 9" />
+              <path d="M5.1 7.2h13.8" />
+              <path d="M5.1 16.8h13.8" />
+            </svg>
+          </span>
+          <span class="language-current-text" data-en="English" data-ne="नेपाली">English</span>
+          <svg class="language-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </summary>
+        <div class="language-menu" role="group" aria-label="Language options">
+          <button class="lang-button is-active" type="button" data-lang-toggle="en" aria-pressed="true">English</button>
+          <button class="lang-button" type="button" data-lang-toggle="ne" aria-pressed="false">नेपाली</button>
+        </div>
+      </details>
 
       <button
         class="menu-toggle"
