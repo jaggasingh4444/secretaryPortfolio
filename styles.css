@@ -347,8 +347,64 @@ a {
 
 .hero-content {
   position: relative;
+  z-index: 3;
   max-width: 800px;
   animation: riseIn 760ms ease both;
+}
+
+.hero-nepal-flag {
+  position: absolute;
+  top: clamp(6.1rem, 10vw, 8.2rem);
+  right: clamp(1.15rem, 5vw, 5rem);
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 0.32rem auto;
+  align-items: start;
+  width: clamp(4.6rem, 7vw, 6.8rem);
+  opacity: 0.9;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.28));
+  animation: flagFloat 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.flag-pole {
+  width: 0.22rem;
+  height: 100%;
+  min-height: clamp(4.8rem, 8vw, 7.2rem);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(132, 240, 223, 0.6));
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+.nepal-flag-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.flag-cloth {
+  transform-origin: 4px 44px;
+  animation: flagWave 2.8s ease-in-out infinite;
+}
+
+.flag-border {
+  fill: #003893;
+}
+
+.flag-field {
+  fill: #dc143c;
+}
+
+.flag-moon,
+.flag-sun {
+  fill: #ffffff;
+}
+
+.flag-rays {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.4;
+  stroke-linecap: round;
 }
 
 .hero-text {
@@ -1744,8 +1800,39 @@ body.lightbox-open {
     transform: scale(1);
   }
 }
+@keyframes flagFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate3d(0, -0.45rem, 0) rotate(2deg);
+  }
+}
+
+@keyframes flagWave {
+  0%,
+  100% {
+    transform: skewY(0deg) scaleX(1);
+  }
+  50% {
+    transform: skewY(-2.6deg) scaleX(1.035);
+  }
+}
+
 
 @media (max-width: 840px) {
+
+  .hero-nepal-flag {
+    top: 6.75rem;
+    right: 1.05rem;
+    width: 3.65rem;
+    opacity: 0.78;
+  }
+
+  .flag-pole {
+    min-height: 4.2rem;
+  }
   .site-header {
     position: absolute;
     display: grid;
