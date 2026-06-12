@@ -1020,7 +1020,6 @@ h1 {
   text-align-last: left;
 }
 
-
 .meeting-section {
   width: 100%;
   padding-left: max(1rem, calc((100% - 1120px) / 2));
@@ -1076,6 +1075,21 @@ h1 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: minmax(14rem, 1.05fr) minmax(9.5rem, 0.95fr);
 }
+
+.meeting-gallery-four {
+  grid-template-columns: 0.9fr repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(12rem, 1fr));
+}
+
+.meeting-gallery-four .meeting-photo-tall {
+  grid-row: span 2;
+  min-height: 27rem;
+}
+
+.meeting-gallery-four .meeting-photo-wide {
+  grid-column: 2 / -1;
+}
+
 
 .meeting-photo {
   position: relative;
@@ -2071,6 +2085,18 @@ body.lightbox-open {
   .meeting-gallery-five {
     grid-template-columns: 1fr;
     grid-template-rows: none;
+  }
+
+  .meeting-gallery-four {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .meeting-gallery-four .meeting-photo-tall,
+  .meeting-gallery-four .meeting-photo-wide {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 16rem;
   }
 
   .meeting-photo,
