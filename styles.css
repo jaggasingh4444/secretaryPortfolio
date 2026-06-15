@@ -2179,15 +2179,31 @@ body.lightbox-open {
   }
 
   .about-title {
-    gap: 0.8rem;
+    gap: 0.55rem;
   }
 
   .about-portrait {
-    width: min(10rem, 48vw);
+    display: none;
   }
 
   .about-title h2 {
     max-width: 100%;
+    font-size: clamp(2.35rem, 10vw, 3.35rem);
+  }
+
+  .about-subtitle {
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+
+  .about-profile {
+    gap: 0.82rem;
+  }
+
+  .about-profile p {
+    font-size: 1rem;
+    line-height: 1.62;
+    text-align: left;
   }
 
   .quick-strip {
@@ -2195,7 +2211,8 @@ body.lightbox-open {
   }
 
   .about-section {
-    padding-top: clamp(2rem, 6vw, 3rem);
+    padding-top: clamp(1.35rem, 4.5vw, 2.2rem);
+    row-gap: 1.1rem;
   }
 
   .gallery-tile {
