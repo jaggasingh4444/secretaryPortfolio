@@ -509,8 +509,9 @@ h1 {
 }
 
 .about-section {
-  grid-template-columns: minmax(13.5rem, 0.55fr) minmax(0, 1.45fr);
-  gap: clamp(1.15rem, 3vw, 2.4rem);
+  width: min(1480px, calc(100% - clamp(2rem, 6vw, 7rem)));
+  grid-template-columns: minmax(18rem, 0.52fr) minmax(0, 1.48fr);
+  gap: clamp(2rem, 4vw, 4.25rem);
   align-items: start;
 }
 
@@ -597,7 +598,7 @@ h1 {
 .about-profile {
   display: grid;
   gap: 1rem;
-  max-width: 58rem;
+  max-width: 68rem;
 }
 
 .about-profile p {
@@ -622,6 +623,21 @@ h1 {
 
 .profile-fact-wide {
   grid-column: 1 / -1;
+}
+
+@media (min-width: 1280px) {
+  .about-profile {
+    max-width: none;
+  }
+
+  .profile-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+
+  .profile-fact-wide {
+    grid-column: 1 / -1;
+  }
 }
 
 .profile-fact span {
