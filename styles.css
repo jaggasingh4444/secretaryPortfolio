@@ -9,6 +9,9 @@
   --rose: #d9467c;
   --gold: #d69b1d;
   --shadow: 0 18px 50px rgba(20, 33, 43, 0.12);
+  --link-hover-bg: #0f766e;
+  --link-hover-ink: #ffffff;
+  --link-hover-shadow: 0 10px 22px rgba(15, 118, 110, 0.18);
 }
 
 * {
@@ -104,10 +107,18 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: clamp(0.65rem, 1.75vw, 1.5rem);
+  gap: clamp(0.25rem, 1vw, 0.65rem);
   color: inherit;
   font-weight: 700;
   font-size: 0.92rem;
+}
+
+.nav-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.24rem;
+  border-radius: 0.46rem;
+  padding: 0.48rem 0.66rem;
 }
 
 .menu-toggle {
@@ -117,15 +128,39 @@ a {
 .nav-links a,
 .lang-button,
 .header-action,
-.button {
-  transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+.button,
+.info-card a,
+.update-card a,
+.site-footer a,
+.profile-link,
+.reel-link {
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, border-radius 180ms ease;
 }
 
 .nav-links a:hover,
-.lang-button:hover,
-.header-action:hover,
-.button:hover {
-  transform: translateY(-2px);
+.nav-links a:focus-visible,
+.info-card a:hover,
+.info-card a:focus-visible,
+.update-card a:hover,
+.update-card a:focus-visible,
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: var(--link-hover-ink);
+  background: var(--link-hover-bg);
+  box-shadow: var(--link-hover-shadow);
+}
+
+.nav-links a:focus-visible,
+.info-card a:focus-visible,
+.update-card a:focus-visible,
+.site-footer a:focus-visible {
+  outline: 3px solid rgba(132, 240, 223, 0.45);
+  outline-offset: 2px;
+}
+
+.lang-button:hover {
+  color: var(--link-hover-ink);
+  background: var(--link-hover-bg);
 }
 
 .language-switcher {
@@ -254,9 +289,10 @@ a {
   text-align: left;
 }
 
-.lang-button:hover {
-  color: var(--teal);
-  background: rgba(15, 118, 110, 0.08);
+.lang-button:hover,
+.lang-button:focus-visible {
+  color: var(--link-hover-ink);
+  background: var(--link-hover-bg);
 }
 
 .lang-button.is-active {
@@ -302,6 +338,17 @@ a {
   padding: 0.75rem 1.15rem;
   font-weight: 800;
   white-space: nowrap;
+}
+
+.header-action:hover,
+.header-action:focus-visible,
+.button:hover,
+.button:focus-visible {
+  border-radius: 0.58rem;
+  color: var(--link-hover-ink);
+  background: var(--link-hover-bg);
+  border-color: var(--link-hover-bg);
+  box-shadow: var(--link-hover-shadow);
 }
 
 .header-action {
@@ -667,10 +714,11 @@ h1 {
   transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
-.profile-link:hover {
-  transform: translateY(-2px);
+.profile-link:hover,
+.profile-link:focus-visible {
+  border-radius: 0.58rem;
   background: #0d625c;
-  box-shadow: 0 20px 34px rgba(15, 118, 110, 0.28);
+  box-shadow: 0 18px 30px rgba(15, 118, 110, 0.24);
 }
 
 .stat-text {
@@ -729,6 +777,12 @@ h1 {
 }
 
 .info-card a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.05rem;
+  margin-left: -0.45rem;
+  border-radius: 0.42rem;
+  padding: 0.32rem 0.45rem;
   color: var(--teal);
   font-weight: 800;
 }
@@ -962,6 +1016,12 @@ h1 {
 }
 
 .update-card a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.05rem;
+  margin-left: -0.45rem;
+  border-radius: 0.42rem;
+  padding: 0.32rem 0.45rem;
   color: var(--teal);
   font-weight: 800;
 }
@@ -1487,8 +1547,11 @@ body.lightbox-open {
   box-shadow: 0 14px 28px rgba(15, 118, 110, 0.22);
 }
 
-.reel-link:hover {
-  transform: translateY(-2px);
+.reel-link:hover,
+.reel-link:focus-visible {
+  border-radius: 0.58rem;
+  background: #0d625c;
+  box-shadow: 0 18px 30px rgba(15, 118, 110, 0.24);
 }
 
 
@@ -1861,6 +1924,11 @@ body.lightbox-open {
 }
 
 .site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.05rem;
+  border-radius: 0.42rem;
+  padding: 0.3rem 0.48rem;
   color: var(--teal);
   font-weight: 800;
 }
