@@ -26,9 +26,11 @@ const meetingPreviewDate = document.querySelector("[data-meeting-preview-date]")
 const meetingPreviewSummary = document.querySelector("[data-meeting-preview-summary]");
 const meetingPreviewLink = document.querySelector("[data-meeting-preview-link]");
 const meetingPreviewCloseButtons = document.querySelectorAll("[data-meeting-preview-close]");
+const meetingRecords = Array.from(document.querySelectorAll("[data-meeting-record]"));
 
 let activeMeetingPhoto = 0;
 let activeMeetingPreview = null;
+let selectedMeetingRecord = null;
 
 const closeMobileMenu = () => {
   header?.classList.remove("is-menu-open");
@@ -84,6 +86,22 @@ const closeMeetingPreview = (restoreFocus = true) => {
   if (restoreFocus) {
     activeMeetingPreview?.focus();
   }
+};
+
+const selectRequestedMeeting = () => {
+  if (!meetingRecords.length) return;
+
+  const meetingNumber = new URLSearchParams(window.location.search).get("meeting");
+  if (!meetingNumber) return;
+
+  const requestedRecord = meetingRecords.find((record) => record.dataset.meetingRecord === meetingNumber);
+  if (!requestedRecord) return;
+
+  selectedMeetingRecord = requestedRecord;
+  document.body.classList.add("single-meeting-view");
+  meetingRecords.forEach((record) => {
+    record.hidden = record !== requestedRecord;
+  });
 };
 
 const syncHeader = () => {
@@ -241,6 +259,14 @@ const setLanguage = (language) => {
     renderMeetingPreview(activeMeetingPreview);
   }
 
+  if (selectedMeetingRecord) {
+    const selectedTitle = selectedMeetingRecord.querySelector("h2");
+    const pageTitle = selectedTitle?.dataset[nextLanguage] || selectedTitle?.textContent.trim();
+    if (pageTitle) {
+      document.title = `${pageTitle} | Aakriti Awasthi Secretariat`;
+    }
+  }
+
   languageButtons.forEach((button) => {
     const isActive = button.dataset.langToggle === nextLanguage;
     button.classList.toggle("is-active", isActive);
@@ -254,6 +280,7 @@ const setLanguage = (language) => {
   }
 };
 
+selectRequestedMeeting();
 reveals.forEach((item) => revealObserver.observe(item));
 stats.forEach((item) => countObserver.observe(item));
 languageButtons.forEach((button) => {
