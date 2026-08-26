@@ -32,6 +32,36 @@ let activeMeetingPhoto = 0;
 let activeMeetingPreview = null;
 let selectedMeetingRecord = null;
 
+const getMeetingDate = (item) => {
+  return item.dataset.meetingDate || item.querySelector("time")?.getAttribute("datetime") || "";
+};
+
+const sortMeetingChildren = (container, selector) => {
+  if (!container) return;
+
+  Array.from(container.children)
+    .filter((item) => item.matches(selector))
+    .sort((first, second) => getMeetingDate(second).localeCompare(getMeetingDate(first)))
+    .forEach((item) => container.append(item));
+};
+
+const sortMeetingsNewestFirst = () => {
+  document.querySelectorAll(".nav-dropdown-panel").forEach((panel) => {
+    sortMeetingChildren(panel, "[data-meeting-preview]");
+  });
+
+  document.querySelectorAll(".meeting-card-grid").forEach((grid) => {
+    sortMeetingChildren(grid, ".meeting-card");
+  });
+
+  if (meetingRecords.length > 1) {
+    const recordsContainer = meetingRecords[0].parentElement;
+    [...meetingRecords]
+      .sort((first, second) => getMeetingDate(second).localeCompare(getMeetingDate(first)))
+      .forEach((record) => recordsContainer?.append(record));
+  }
+};
+
 const closeMobileMenu = () => {
   header?.classList.remove("is-menu-open");
   menuToggle?.setAttribute("aria-expanded", "false");
@@ -280,6 +310,7 @@ const setLanguage = (language) => {
   }
 };
 
+sortMeetingsNewestFirst();
 selectRequestedMeeting();
 reveals.forEach((item) => revealObserver.observe(item));
 stats.forEach((item) => countObserver.observe(item));
