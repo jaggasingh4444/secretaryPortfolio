@@ -3969,3 +3969,21 @@ body,
     translate: none;
   }
 }
+
+/* Larger navigation labels */
+.nav-links {
+  font-size: 1.04rem;
+  font-weight: 850;
+}
+
+@media (min-width: 841px) and (max-width: 1280px) {
+  .nav-links {
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 840px) {
+  .nav-links {
+    font-size: 1rem;
+  }
+}
