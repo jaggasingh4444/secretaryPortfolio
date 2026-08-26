@@ -3586,3 +3586,152 @@ body,
     transform: none;
   }
 }
+
+/* Lightweight interaction polish */
+.meeting-overview-heading h2,
+.section-heading h2 {
+  position: relative;
+  padding-bottom: 0.65rem;
+}
+
+.meeting-overview-heading h2::after,
+.section-heading h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(5.5rem, 28%);
+  height: 0.24rem;
+  border-radius: 0.2rem;
+  background: #c8102e;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms ease-out;
+}
+
+.meeting-overview-heading.is-visible h2::after,
+.section-heading.is-visible h2::after {
+  transform: scaleX(1);
+}
+
+.meeting-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.meeting-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 3;
+  height: 0.28rem;
+  background: #c8102e;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease-out;
+}
+
+.meeting-card:hover::before,
+.meeting-card:focus-within::before {
+  transform: scaleX(1);
+}
+
+.meeting-card.reveal {
+  transform: translateY(22px);
+}
+
+.meeting-card.reveal.is-visible {
+  transform: translateY(0);
+}
+
+.meeting-card.reveal.is-visible:hover,
+.meeting-card.reveal.is-visible:focus-within {
+  transform: translateY(-0.35rem);
+}
+
+.meeting-card-grid .meeting-card:nth-child(2).reveal {
+  transition-delay: 70ms;
+}
+
+.meeting-card-grid .meeting-card:nth-child(3).reveal {
+  transition-delay: 140ms;
+}
+
+.meeting-card-media span {
+  transition: transform 180ms ease-out, background-color 180ms ease-out;
+}
+
+.meeting-card:hover .meeting-card-media span,
+.meeting-card:focus-within .meeting-card-media span {
+  transform: translateY(-0.18rem);
+}
+
+.meeting-card-link {
+  gap: 0.6rem;
+  overflow: hidden;
+}
+
+.meeting-card-link::after {
+  content: "\2192";
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 180ms ease-out;
+}
+
+.meeting-card-link:hover::after,
+.meeting-card-link:focus-visible::after {
+  transform: translateX(0.32rem);
+}
+
+.meeting-record-gallery .meeting-photo {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 260ms ease-out, transform 260ms ease-out, border-color 160ms ease;
+}
+
+.meeting-record-gallery.is-visible .meeting-photo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.meeting-record-gallery.is-visible .meeting-photo:nth-child(2) {
+  transition-delay: 55ms;
+}
+
+.meeting-record-gallery.is-visible .meeting-photo:nth-child(3) {
+  transition-delay: 110ms;
+}
+
+.meeting-record-gallery.is-visible .meeting-photo:nth-child(4) {
+  transition-delay: 165ms;
+}
+
+.meeting-record-gallery.is-visible .meeting-photo:nth-child(5) {
+  transition-delay: 220ms;
+}
+
+@media (max-width: 700px) {
+  .meeting-card-grid .meeting-card.reveal {
+    transition-delay: 0ms;
+  }
+
+  .meeting-card.reveal.is-visible:hover,
+  .meeting-card.reveal.is-visible:focus-within {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meeting-overview-heading h2::after,
+  .section-heading h2::after,
+  .meeting-card::before {
+    transform: scaleX(1);
+  }
+
+  .meeting-card-grid .meeting-card.reveal,
+  .meeting-record-gallery .meeting-photo {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0ms;
+  }
+}
