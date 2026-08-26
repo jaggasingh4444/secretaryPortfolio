@@ -3440,7 +3440,7 @@ body,
 
 .meeting-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 1.4rem);
 }
 
@@ -3657,6 +3657,10 @@ body,
   transition-delay: 140ms;
 }
 
+.meeting-card-grid .meeting-card:nth-child(4).reveal {
+  transition-delay: 210ms;
+}
+
 .meeting-card-media span {
   transition: transform 180ms ease-out, background-color 180ms ease-out;
 }
@@ -3708,6 +3712,14 @@ body,
 
 .meeting-record-gallery.is-visible .meeting-photo:nth-child(5) {
   transition-delay: 220ms;
+}
+
+.meeting-record-gallery.is-visible .meeting-photo:nth-child(6) {
+  transition-delay: 275ms;
+}
+
+.meeting-record-gallery.is-visible .meeting-photo:nth-child(7) {
+  transition-delay: 330ms;
 }
 
 @media (max-width: 700px) {
