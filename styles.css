@@ -4003,7 +4003,7 @@ body,
 /* Meeting archive cards */
 .meeting-card-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: 1rem;
 }
 
 .meeting-card {
@@ -4029,40 +4029,42 @@ body,
 }
 
 .meeting-card-content {
-  min-height: 18rem;
-  padding: clamp(1.4rem, 2.5vw, 2rem);
+  min-height: 0;
+  padding: 1.2rem;
 }
 
 .meeting-card-content time {
-  margin-bottom: 0.65rem;
-  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.86rem;
 }
 
 .meeting-card-content h3 {
-  margin-bottom: 0.75rem;
-  font-size: clamp(1.35rem, 2vw, 1.72rem);
-  line-height: 1.18;
+  margin-bottom: 0.55rem;
+  font-size: clamp(1.15rem, 1.55vw, 1.4rem);
+  line-height: 1.2;
 }
 
 .meeting-card-content p {
-  display: block;
-  overflow: visible;
-  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
   color: rgba(21, 21, 21, 0.7);
-  font-size: clamp(0.95rem, 1.25vw, 1.08rem);
-  line-height: 1.65;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .meeting-card-link {
   width: auto;
-  min-width: 9.5rem;
-  min-height: 3.2rem;
+  min-width: 8.5rem;
+  min-height: 2.7rem;
   margin-top: auto;
-  padding: 0.8rem 1.15rem;
+  padding: 0.62rem 0.9rem;
   color: #151515;
   border-color: #151515;
   background: #ffffff;
-  font-size: 0.98rem;
+  font-size: 0.9rem;
 }
 
 .meeting-card-link:hover,
@@ -4079,7 +4081,11 @@ body,
 
   .meeting-card-content {
     min-height: 0;
-    padding: 1.25rem;
+    padding: 1.1rem;
+  }
+
+  .meeting-card-content p {
+    -webkit-line-clamp: 3;
   }
 
   .meeting-card-media {
