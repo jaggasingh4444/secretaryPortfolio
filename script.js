@@ -17,8 +17,18 @@ const formStatus = document.querySelector("[data-form-status]");
 const contactSubmit = document.querySelector(".contact-submit");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const navLinks = document.querySelector(".nav-links");
+const meetingMenu = document.querySelector("[data-meeting-menu]");
+const meetingMenuToggle = document.querySelector("[data-meeting-toggle]");
+const meetingPreviewButtons = document.querySelectorAll("[data-meeting-preview]");
+const meetingPreviewModal = document.querySelector("[data-meeting-preview-modal]");
+const meetingPreviewTitle = document.querySelector("[data-meeting-preview-title]");
+const meetingPreviewDate = document.querySelector("[data-meeting-preview-date]");
+const meetingPreviewSummary = document.querySelector("[data-meeting-preview-summary]");
+const meetingPreviewLink = document.querySelector("[data-meeting-preview-link]");
+const meetingPreviewCloseButtons = document.querySelectorAll("[data-meeting-preview-close]");
 
 let activeMeetingPhoto = 0;
+let activeMeetingPreview = null;
 
 const closeMobileMenu = () => {
   header?.classList.remove("is-menu-open");
@@ -31,8 +41,53 @@ const closeLanguageMenu = () => {
   }
 };
 
+const closeMeetingMenu = () => {
+  meetingMenu?.classList.remove("is-open");
+  meetingMenuToggle?.setAttribute("aria-expanded", "false");
+};
+
+const renderMeetingPreview = (trigger) => {
+  if (!trigger || !meetingPreviewTitle || !meetingPreviewDate || !meetingPreviewSummary || !meetingPreviewLink) {
+    return;
+  }
+
+  const language = document.documentElement.lang === "ne" ? "ne" : "en";
+  const title = language === "ne" ? trigger.dataset.titleNe : trigger.dataset.titleEn;
+  const date = language === "ne" ? trigger.dataset.dateNe : trigger.dataset.dateEn;
+  const summary = language === "ne" ? trigger.dataset.summaryNe : trigger.dataset.summaryEn;
+
+  meetingPreviewTitle.textContent = title || "";
+  meetingPreviewDate.textContent = date || "";
+  meetingPreviewSummary.textContent = summary || "";
+  meetingPreviewLink.href = trigger.dataset.page || "meetings.html";
+};
+
+const openMeetingPreview = (trigger) => {
+  if (!meetingPreviewModal) return;
+
+  activeMeetingPreview = trigger;
+  renderMeetingPreview(trigger);
+  closeMeetingMenu();
+  closeMobileMenu();
+  meetingPreviewModal.classList.add("is-open");
+  meetingPreviewModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("meeting-preview-open");
+  meetingPreviewLink?.focus();
+};
+
+const closeMeetingPreview = (restoreFocus = true) => {
+  if (!meetingPreviewModal?.classList.contains("is-open")) return;
+
+  meetingPreviewModal.classList.remove("is-open");
+  meetingPreviewModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("meeting-preview-open");
+  if (restoreFocus) {
+    activeMeetingPreview?.focus();
+  }
+};
+
 const syncHeader = () => {
-  header.classList.toggle("is-scrolled", window.scrollY > 24);
+  header?.classList.toggle("is-scrolled", window.scrollY > 24);
 };
 
 const revealObserver = new IntersectionObserver(
@@ -182,6 +237,9 @@ const setLanguage = (language) => {
   if (lightbox?.classList.contains("is-open")) {
     renderLightboxPhoto();
   }
+  if (meetingPreviewModal?.classList.contains("is-open") && activeMeetingPreview) {
+    renderMeetingPreview(activeMeetingPreview);
+  }
 
   languageButtons.forEach((button) => {
     const isActive = button.dataset.langToggle === nextLanguage;
@@ -210,6 +268,22 @@ menuToggle?.addEventListener("click", () => {
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
+meetingMenuToggle?.addEventListener("click", (event) => {
+  event.stopPropagation();
+  const isOpen = meetingMenu?.classList.toggle("is-open") || false;
+  meetingMenuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+meetingPreviewButtons.forEach((button) => {
+  button.addEventListener("click", () => openMeetingPreview(button));
+});
+
+meetingPreviewCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeMeetingPreview);
+});
+
+meetingPreviewLink?.addEventListener("click", () => closeMeetingPreview(false));
+
 navLinks?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
 });
@@ -217,6 +291,9 @@ navLinks?.querySelectorAll("a").forEach((link) => {
 document.addEventListener("click", (event) => {
   if (!languageSwitcher?.contains(event.target)) {
     closeLanguageMenu();
+  }
+  if (!meetingMenu?.contains(event.target)) {
+    closeMeetingMenu();
   }
 });
 contactForm?.addEventListener("submit", async (event) => {
@@ -286,6 +363,8 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeMobileMenu();
     closeLanguageMenu();
+    closeMeetingMenu();
+    closeMeetingPreview();
   }
 
   if (!lightbox?.classList.contains("is-open")) return;
