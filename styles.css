@@ -3004,6 +3004,7 @@ body,
 .language-current,
 .is-scrolled .language-current {
   border: 1.5px solid #151515;
+  border-radius: 0;
   color: #151515;
   background: #ffffff;
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
@@ -3020,12 +3021,31 @@ body,
 }
 
 .language-menu {
+  gap: 0;
+  padding: 0;
   border-color: #151515;
+  border-radius: 0;
   background: #ffffff;
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.lang-button {
+  min-height: 2.75rem;
+  border-radius: 0;
+  padding: 0.7rem 0.9rem;
+}
+
+.lang-button + .lang-button {
+  border-top: 1px solid rgba(21, 21, 21, 0.18);
 }
 
 .lang-button:hover,
+.lang-button:focus-visible {
+  color: #ffffff;
+  background: #c8102e;
+}
+
 .lang-button.is-active {
   color: #ffffff;
   background: #151515;
