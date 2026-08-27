@@ -528,6 +528,24 @@ a {
   width: 100%;
   height: auto;
   overflow: visible;
+  transform-origin: 9% 50%;
+  animation: nepal-flag-wave 3.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes nepal-flag-wave {
+  0%,
+  100% {
+    transform: perspective(420px) rotateY(-3deg) skewY(-0.35deg) scaleX(0.99);
+  }
+
+  35% {
+    transform: perspective(420px) rotateY(7deg) skewY(0.55deg) scaleX(0.965);
+  }
+
+  68% {
+    transform: perspective(420px) rotateY(-5deg) skewY(-0.2deg) scaleX(1);
+  }
 }
 
 .flag-cloth {
@@ -4792,5 +4810,12 @@ h3,
 
   .meeting-detail-main {
     padding-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nepal-flag-svg {
+    animation: none;
+    transform: none;
   }
 }
