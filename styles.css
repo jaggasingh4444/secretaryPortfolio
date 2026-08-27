@@ -4729,3 +4729,68 @@ h3,
     position: fixed;
   }
 }
+
+/* Keep the full header in normal flow so content starts directly below the nav. */
+.site-header,
+.site-header.is-scrolled,
+.meeting-detail-page .site-header {
+  position: relative;
+}
+
+.hero {
+  min-height: calc(100svh - 8.75rem);
+  padding-top: 4rem;
+}
+
+.hero-nepal-flag {
+  top: 1.5rem;
+}
+
+.meeting-detail-main {
+  padding-top: 0;
+}
+
+@media (min-width: 841px) and (hover: hover) and (pointer: fine) {
+  .nav-dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0.8rem;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-panel,
+  .nav-dropdown:focus-within .nav-dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-chevron,
+  .nav-dropdown:focus-within .nav-dropdown-chevron {
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 840px) {
+  .site-header,
+  .site-header.is-scrolled,
+  .meeting-detail-page .site-header {
+    position: relative;
+  }
+
+  .hero {
+    min-height: calc(100svh - 8.65rem);
+    padding-top: 3rem;
+  }
+
+  .hero-nepal-flag {
+    top: 1rem;
+  }
+
+  .meeting-detail-main {
+    padding-top: 0;
+  }
+}
