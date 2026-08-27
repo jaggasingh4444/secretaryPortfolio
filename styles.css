@@ -3085,6 +3085,14 @@ body,
   }
 }
 
+@media (min-width: 1181px) {
+  .nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 840px) {
   .site-header {
     grid-template-columns: minmax(0, 1fr) 7.85rem 3.4rem;
