@@ -518,7 +518,7 @@ a {
   z-index: 2;
   display: grid;
   align-items: start;
-  width: clamp(5.3rem, 8vw, 7.7rem);
+  width: clamp(4rem, 6vw, 5.8rem);
   opacity: 0.9;
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
   pointer-events: none;
@@ -2349,7 +2349,7 @@ body.meeting-preview-open {
   .hero-nepal-flag {
     top: 6.75rem;
     right: 1.05rem;
-    width: 4.1rem;
+    width: 3.2rem;
     opacity: 0.78;
   }
 
