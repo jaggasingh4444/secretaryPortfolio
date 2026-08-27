@@ -27,6 +27,7 @@ const meetingPreviewSummary = document.querySelector("[data-meeting-preview-summ
 const meetingPreviewLink = document.querySelector("[data-meeting-preview-link]");
 const meetingPreviewCloseButtons = document.querySelectorAll("[data-meeting-preview-close]");
 const meetingRecords = Array.from(document.querySelectorAll("[data-meeting-record]"));
+const liveDateElements = document.querySelectorAll("[data-live-date]");
 
 let activeMeetingPhoto = 0;
 let activeMeetingPreview = null;
@@ -271,6 +272,29 @@ const buildMailtoUrl = (form) => {
   return `mailto:secretariatofaakriti@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };
 
+const formatLiveDate = () => {
+  if (!liveDateElements.length) return;
+
+  const now = new Date();
+  const isNepali = document.documentElement.lang === "ne";
+  const compact = window.matchMedia("(max-width: 700px)").matches;
+  const formatter = new Intl.DateTimeFormat(isNepali ? "ne-NP" : "en-GB", {
+    timeZone: "Asia/Kathmandu",
+    weekday: compact ? undefined : "long",
+    year: "numeric",
+    month: compact ? "short" : "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
+  liveDateElements.forEach((element) => {
+    element.textContent = formatter.format(now);
+    element.setAttribute("datetime", now.toISOString());
+  });
+};
+
 const setLanguage = (language) => {
   const nextLanguage = language === "ne" ? "ne" : "en";
 
@@ -280,6 +304,8 @@ const setLanguage = (language) => {
   translatable.forEach((item) => {
     item.innerHTML = item.dataset[nextLanguage];
   });
+
+  formatLiveDate();
 
   updateMeetingPhotoLabels();
   if (lightbox?.classList.contains("is-open")) {
@@ -449,4 +475,6 @@ try {
 
 setLanguage(savedLanguage);
 syncHeader();
+window.setInterval(formatLiveDate, 60_000);
+window.addEventListener("resize", formatLiveDate, { passive: true });
 window.addEventListener("scroll", syncHeader, { passive: true });
