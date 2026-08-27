@@ -3061,6 +3061,52 @@ body,
   display: none;
 }
 
+@media (min-width: 841px) {
+  .site-header {
+    height: 5.5rem;
+    justify-content: flex-start;
+  }
+
+  .language-switcher {
+    flex: 0 0 10rem;
+    width: 10rem;
+    margin-left: auto;
+  }
+
+  .language-current {
+    height: 3.5rem;
+    min-height: 3.5rem;
+  }
+
+  .header-action {
+    flex: 0 0 8.5rem;
+    width: 8.5rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 840px) {
+  .site-header {
+    grid-template-columns: minmax(0, 1fr) 7.85rem 3.4rem;
+  }
+
+  .language-switcher {
+    width: 7.85rem;
+    margin: 0;
+  }
+
+  .language-current {
+    height: 2.9rem;
+    min-height: 2.9rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    grid-template-columns: minmax(0, 1fr) 7.85rem 3rem;
+  }
+}
+
 .header-action,
 .button,
 .profile-link,
