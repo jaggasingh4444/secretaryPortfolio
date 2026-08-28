@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-    <link rel="stylesheet" href="styles.css?v=20260827-10" />
+    <link rel="stylesheet" href="styles.css?v=20260828-1" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -221,10 +221,12 @@
         <div class="hero-nepal-flag" aria-label="Animated Nepal flag" role="img">
           <svg class="nepal-flag-svg" viewBox="140 30 350 380" aria-hidden="true" focusable="false">
             <defs>
+              <path
+                id="nepal-flag-silhouette"
+                d="M156 47 C212 104 275 104 332 117 C389 130 431 162 465 200 C411 170 356 179 256 223 C325 265 392 316 459 361 C400 341 352 359 303 379 C251 400 200 399 156 373 Z"
+              />
               <clipPath id="nepal-flag-shape" clipPathUnits="userSpaceOnUse">
-                <path
-                  d="M153 43 C210 104 274 101 332 115 C391 128 435 162 470 205 C415 167 357 176 251 222 C324 264 395 319 464 366 C401 342 352 360 303 381 C250 404 197 402 153 375 Z"
-                />
+                <use href="#nepal-flag-silhouette" />
               </clipPath>
             </defs>
             <image
@@ -237,6 +239,7 @@
               preserveAspectRatio="none"
               clip-path="url(#nepal-flag-shape)"
             />
+            <use class="nepal-flag-edge" href="#nepal-flag-silhouette" />
           </svg>
         </div>
         <div class="hero-content">

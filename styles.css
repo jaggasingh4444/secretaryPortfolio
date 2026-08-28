@@ -518,7 +518,7 @@ a {
   z-index: 2;
   display: grid;
   align-items: start;
-  width: clamp(4rem, 6vw, 5.8rem);
+  width: clamp(3rem, 4.5vw, 4.5rem);
   opacity: 0.9;
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
   pointer-events: none;
@@ -531,6 +531,14 @@ a {
   transform-origin: 9% 50%;
   animation: nepal-flag-wave 3.8s ease-in-out infinite;
   will-change: transform;
+}
+
+.nepal-flag-edge {
+  fill: none;
+  stroke: #003893;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  pointer-events: none;
 }
 
 @keyframes nepal-flag-wave {
@@ -2349,7 +2357,7 @@ body.meeting-preview-open {
   .hero-nepal-flag {
     top: 6.75rem;
     right: 1.05rem;
-    width: 3.2rem;
+    width: 2.5rem;
     opacity: 0.78;
   }
 
